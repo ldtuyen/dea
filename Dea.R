@@ -13,12 +13,12 @@ CRS_IOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "
 CRS_OOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "output", RTS = "constant")
 
 VRS_Model <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "input", RTS = "variable")
-result1 <- cbind(round(CRS_IOModel$thetaOpt,4))
-rownames(result1) <- Data[[1]]
-colnames(result1) <- c("Efficiency")
-View(result1)
+CRS_IO_Result <- cbind(round(CRS_IOModel$thetaOpt,4))
+rownames(CRS_IO_Result) <- Data[[1]]
+colnames(CRS_IO_Result) <- c("Efficiency")
+View(CRS_IO_Result)
 
-result2 <- cbind(round(CRS_OOModel$thetaOpt,4))
-rownames(result2) <- Data[[1]]
-colnames(result2) <- c("Efficiency")
-View(result2)
+CRS_OO_Result <- cbind(round(CRS_OOModel$thetaOpt,4))
+rownames(CRS_OO_Result) <- Data[[1]]
+colnames(CRS_OO_Result) <- c("Efficiency")
+View(CRS_OO_Result)

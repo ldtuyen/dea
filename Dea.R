@@ -12,7 +12,8 @@ out_var <- select(Data, "FIXED_ASSETS" ,	"NET_INCOME" )
 CRS_IOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "input", RTS = "constant")
 CRS_OOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "output", RTS = "constant")
 
-VRS_Model <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "input", RTS = "variable")
+VRS_IOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "input", RTS = "variable")
+VRS_OOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "output", RTS = "variable")
 CRS_IO_Result <- cbind(round(CRS_IOModel$thetaOpt,4))
 rownames(CRS_IO_Result) <- Data[[1]]
 colnames(CRS_IO_Result) <- c("Efficiency")
@@ -22,3 +23,14 @@ CRS_OO_Result <- cbind(round(CRS_OOModel$thetaOpt,4))
 rownames(CRS_OO_Result) <- Data[[1]]
 colnames(CRS_OO_Result) <- c("Efficiency")
 View(CRS_OO_Result)
+
+VRS_IO_Result <- cbind(round(VRS_IOModel$thetaOpt,4))
+rownames(VRS_IO_Result) <- Data[[1]]
+colnames(VRS_IO_Result) <- c("Efficiency")
+View(VRS_IO_Result)
+
+VRS_OO_Result <- cbind(round(VRS_OOModel$thetaOpt,4))
+rownames(VRS_OO_Result) <- Data[[1]]
+colnames(VRS_OO_Result) <- c("Efficiency")
+View(VRS_OO_Result)
+

@@ -2,14 +2,13 @@ library(readr)
 library(dplyr)
 library(rDEA)
 library(ggplot2)
-Data <- read_csv("Data.csv")
+Data <- read_csv("data.csv")
 head(Data)
 dplot <- data.frame(Data)
-ggplot(data=dplot, aes(x=dplot$OPERATING.EXPENSE, y=dplot$PROFIT.AFTER.TAX, group=dplot$Bank)) + geom_point(aes(color = dplot$Bank))
 
 
-in_var <- select(Data, "OPERATING EXPENSE")
-out_var <- select(Data, "PROFIT AFTER TAX")
+in_var <- select(Data, "OPERATING_EXPENSE","LOANS_TO_CUSTOMER","TOTAL_SECURITIES")
+out_var <- select(Data, "FIXED_ASSETS" ,	"NET_INCOME" )
 CRS_IOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "input", RTS = "constant")
 CRS_OOModel <- dea(XREF = in_var, YREF = out_var, X=in_var, Y=out_var, model = "output", RTS = "constant")
 
